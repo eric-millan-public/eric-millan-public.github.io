@@ -1,0 +1,71 @@
+<style>
+    /* Style for the logo button */
+    .logo-button {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+  </style>
+  
+  <button class="logo-button" onclick="handleLogoClick()">
+    <svg id="logoSvg" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Vertical gradient to mimic natural basalt texture -->
+        <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#555; stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#222; stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <!-- Group for the hexagon and extension lines -->
+      <g id="logoGroup" transform="translate(0,0)">
+        <!-- Squished hexagon (for a 3D perspective effect) -->
+        <polygon id="hexagon" points="50,20 90,35 90,65 50,80 10,65 10,35" />
+        <!-- Three extension lines:
+             Left line from (10,50) to (10,70)
+             Right line from (90,50) to (90,70)
+             Bottom-middle line from (50,80) to (50,100)
+             The original y2 values are stored in data-original-y2 -->
+        <line class="extLine" x1="10" y1="50" x2="10" y2="70" data-original-y2="70" />
+        <line class="extLine" x1="90" y1="50" x2="90" y2="70" data-original-y2="70" />
+        <line class="extLine" x1="50" y1="80" x2="50" y2="100" data-original-y2="100" />
+      </g>
+    </svg>
+  </button>
+  
+  <script>
+    // Wait until the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      const logoSvg = document.getElementById('logoSvg');
+      const logoGroup = document.getElementById('logoGroup');
+      const extensionLines = document.querySelectorAll('.extLine');
+      // Set the amounts for extension and translation (in SVG coordinate units)
+      const lineExtensionAmount = 20;  // How much extra length on hover
+      const translateUpAmount = -10;     // How far to move the group upward on hover
+  
+      // On hover, move the logo upward and extend the lines
+      logoSvg.addEventListener('mouseenter', () => {
+        logoGroup.setAttribute('transform', `translate(0, ${translateUpAmount})`);
+        extensionLines.forEach(line => {
+          const originalY2 = parseFloat(line.getAttribute('data-original-y2'));
+          line.setAttribute('y2', originalY2 + lineExtensionAmount);
+        });
+      });
+  
+      // When the mouse leaves, revert to the original positions
+      logoSvg.addEventListener('mouseleave', () => {
+        logoGroup.setAttribute('transform', 'translate(0, 0)');
+        extensionLines.forEach(line => {
+          const originalY2 = line.getAttribute('data-original-y2');
+          line.setAttribute('y2', originalY2);
+        });
+      });
+    });
+  
+    // A function to handle clicks on the logo button (customize as needed)
+    function handleLogoClick() {
+      console.log("Logo button clicked!");
+      // You can add further actions here (e.g., navigation, modal opening, etc.)
+    }
+  </script>
+  

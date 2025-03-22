@@ -1,0 +1,18 @@
+#basaltColumns {
+    display: flex;
+    justify-content: center; /* Center columns horizontally */
+    align-items: flex-end; /* Align columns from the bottom */
+    height: 200px; /* Fixed height of the container */
+    margin: 20px;
+}
+
+.column {
+    width: 20px; /* Width of each bar */
+    margin: 0 5px; /* Space between bars */
+    background-color: #333; /* Color of the bars */
+    transition: height 0.5s ease; /* Smooth transition for height change */
+}
+
+.column:hover {
+    height: 180px; /* Set a new height on hover */
+}
