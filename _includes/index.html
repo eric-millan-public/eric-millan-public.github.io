@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Squished Hexagonal Basalt Column Logo</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: sans-serif;
+    }
+    svg {
+      width: 200px;
+      height: 250px;
+      overflow: visible;
+      cursor: pointer;
+    }
+    /* The hexagon uses a gradient fill with a dark stroke */
+    polygon {
+      fill: url(#grad);
+      stroke: #333;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+    /* Lines for extensions with smooth transition */
+    line {
+      stroke: #333;
+      stroke-width: 2;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <svg id="logoSvg" viewBox="0 0 100 120">
+    <defs>
+      <!-- Vertical gradient to mimic the natural basalt texture -->
+      <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#555; stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#222; stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <!-- Group that contains the hexagon and extension lines -->
+    <g id="logoGroup" transform="translate(0,0)">
+      <!-- Squished hexagon (scaled vertically about the center).
+           The original (unsquished) hexagon had points:
+           "50,10 90,30 90,70 50,90 10,70 10,30"
+           Here we scale vertically about the center (50,50) by a factor of 0.75,
+           resulting in:
+           (50,20) (90,35) (90,65) (50,80) (10,65) (10,35)
+      -->
+      <polygon id="hexagon" points="50,20 90,35 90,65 50,80 10,65 10,35" />
+      
+      <!-- Left extension line:
+           Drawn from the midpoint of the left edge. The midpoint between (10,35) and (10,65) is (10,50).
+           Initially extends from y=50 to y=70 -->
+      <line class="extLine" x1="10" y1="50" x2="10" y2="90" data-original-y2="90" />
+      
+      <!-- Right extension line:
+           Midpoint of the right edge (between (90,35) and (90,65)) is (90,50) -->
+      <line class="extLine" x1="90" y1="50" x2="90" y2="90" data-original-y2="90" />
+      
+      <!-- Bottom-middle extension line:
+           Starts at the bottom vertex (50,80) and extends downwards to y=100 initially -->
+      <line class="extLine" x1="50" y1="80" x2="50" y2="100" data-original-y2="100" />
+    </g>
+  </svg>
+  
+  <script>
+    // Get references to the SVG elements
+    const logoSvg = document.getElementById('logoSvg');
+    const logoGroup = document.getElementById('logoGroup');
+    const extensionLines = document.querySelectorAll('.extLine');
+
+    // Define the extension amount for the lines and the upward translation for the group
+    const lineExtensionAmount = 20;  // Extend the lines by 20 units on hover
+    const translateUpAmount = -10;     // Move the entire group upward by 10 units
+
+    // On mouse enter, move the hexagon upward and extend the lines
+    logoSvg.addEventListener('mouseenter', () => {
+      logoGroup.setAttribute('transform', `translate(0, ${translateUpAmount})`);
+      extensionLines.forEach(line => {
+        const originalY2 = parseFloat(line.getAttribute('data-original-y2'));
+        line.setAttribute('y2', originalY2 + lineExtensionAmount);
+      });
+    });
+
+    // On mouse leave, revert to the original positions
+    logoSvg.addEventListener('mouseleave', () => {
+      logoGroup.setAttribute('transform', 'translate(0, 0)');
+      extensionLines.forEach(line => {
+        const originalY2 = line.getAttribute('data-original-y2');
+        line.setAttribute('y2', originalY2);
+      });
+    });
+  </script>
+</body>
+</html>
