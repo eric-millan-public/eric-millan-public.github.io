@@ -1,51 +1,16 @@
-<!-- Inside _layouts/custom.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- include default head elements -->
-    {% include head.html %}
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50; /* Green background for headers */
-            color: white;
-        }
-        tr:nth-child(even){background-color: #f2f2f2}
-    </style>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
 </head>
 <body>
-    <!-- include default header -->
     {% include header.html %}
 
-    <!-- Custom table -->
-    <table>
-        <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-            <th>Header 3</th>
-        </tr>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-        </tr>
-        <tr>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-        </tr>
-    </table>
+    <div class="container">
+        {{ content }}
+    </div>
 
-    <!-- include default footer -->
     {% include footer.html %}
 </body>
 </html>
