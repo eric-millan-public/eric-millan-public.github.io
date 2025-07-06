@@ -1,15 +1,5 @@
 ---
-layout: default
+layout: custom_home
 title: Home
+permalink: /
 ---
-
-# Welcome!
-
-I’m Eric, a Geospatial Coordinator at BC Public Service.
-
-- 🔭 Currently mapping wildfire response  
-- 📫 Reach me: [email](mailto:your.email@example.com)  
-- ⚙️ Explore below 👇
-
-* [Blog](/blog/)  
-* [Repos](/repos/)
