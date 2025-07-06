@@ -1,0 +1,27 @@
+/* main.css - Styles for the main content area of the website */
+
+/* Import Merriweather Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+body {
+    font-family: 'Merriweather', serif; /* Sets the Merriweather font across the website */
+    color: #fff; /* Adjusted for better contrast with the dark background */
+    background-color: #2A1F2D; /* Dark background for the body */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+}
+
+main {
+    padding: 20px; /* Padding around the main content */
+}
+
+h1, h2, h3 {
+    color: #c7b198; /* Light brown color for headings for contrast */
+}
+
+p {
+    line-height: 1.6; /* Improves readability of paragraphs */
+    margin-bottom: 20px; /* Spacing between paragraphs */
+}
+
+/* Add more specific styles as needed */

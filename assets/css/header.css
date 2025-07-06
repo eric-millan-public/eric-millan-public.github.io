@@ -1,0 +1,40 @@
+/* style.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: #2a3847; /* Dark Navy Blue */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #17a2b8; /* Teal */
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #9dc3c1; /* Lighter Teal */
+}

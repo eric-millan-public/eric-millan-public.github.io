@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website Title</title>
+  <style>
+    /* Reset some default margins/padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+    /* The hero section uses the image as the background */
+    .hero {
+      background: url('/assets/images/Whitney_1.JPG') no-repeat center center;
+      background-size: cover;
+    /* Full viewport height but limit it so it doesn't grow unbounded */
+    height: 100vh;
+    max-height: 900px; /* or whatever height works for you */
+    }
+    /* Header styling (title and nav links) */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: rgba(255, 255, 255, 0.0); /* Slightly transparent background */
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      color: #fff; /* Adjust color if needed */
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    /* Example of further page content */
+    .content {
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero section with the background image -->
+  <section class="hero">
+    <!-- Top header with title and navigation links -->
+    <div class="header">
+      <h1>Eric J. Millan</h1>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Additional content below the hero section -->
+  <div class="content">
+    <h2 id="projects">Projects</h2>
+    <p>Details about projects...</p>
+    <h2 id="blog">Blog</h2>
+    <p>Recent blog posts...</p>
+    <h2 id="about">About</h2>
+    <p>Information about me or the site...</p>
+  </div>
+
+</body>
+</html>
